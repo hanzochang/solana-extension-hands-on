@@ -13,8 +13,29 @@ pnpm install
 ローカルバリデータが起動している必要があります。
 
 ```bash
+surfpool
+```
+
+<details>
+<summary>surfpool を持っていない場合</summary>
+
+### surfpool のインストール
+
+```bash
+curl -sSL https://raw.githubusercontent.com/txtx/surfpool/main/scripts/install.sh | bash
+```
+
+### 代替: solana-test-validator
+
+surfpool の代わりに `solana-test-validator` も使用できます。
+
+```bash
 solana-test-validator
 ```
+
+インストール方法は [Solana公式ドキュメント](https://solana.com/docs/intro/installation) を参照してください。
+
+</details>
 
 ## サンプル
 
