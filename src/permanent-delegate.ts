@@ -19,6 +19,7 @@ import {
 import {
   airdropFactory,
   appendTransactionMessageInstructions,
+  assertIsTransactionWithBlockhashLifetime,
   createSolanaRpc,
   createSolanaRpcSubscriptions,
   createTransactionMessage,
@@ -204,6 +205,9 @@ const transactionMessage = pipe(
 const signedTransaction =
   await signTransactionMessageWithSigners(transactionMessage);
 
+// blockhash lifetimeであることをアサート
+assertIsTransactionWithBlockhashLifetime(signedTransaction);
+
 // トランザクションを送信して確認
 await sendAndConfirmTransactionFactory({ rpc, rpcSubscriptions })(
   signedTransaction,
@@ -256,6 +260,9 @@ const seizeTransactionMessage = pipe(
 const signedSeizeTransaction = await signTransactionMessageWithSigners(
   seizeTransactionMessage,
 );
+
+// blockhash lifetimeであることをアサート
+assertIsTransactionWithBlockhashLifetime(signedSeizeTransaction);
 
 // 送信
 await sendAndConfirmTransactionFactory({ rpc, rpcSubscriptions })(

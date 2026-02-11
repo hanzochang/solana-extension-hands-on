@@ -6,19 +6,19 @@
 import { getCreateAccountInstruction } from "@solana-program/system";
 import {
   extension,
-  fetchToken,
   getInitializeAccountInstruction,
-  getInitializeMintInstruction,
   getInitializeMetadataPointerInstruction,
+  getInitializeMintInstruction,
+  getInitializeTokenMetadataInstruction,
   getMintSize,
   getMintToInstruction,
   getTokenSize,
   TOKEN_2022_PROGRAM_ADDRESS,
-  getInitializeTokenMetadataInstruction,
 } from "@solana-program/token-2022";
 import {
   airdropFactory,
   appendTransactionMessageInstructions,
+  assertIsTransactionWithBlockhashLifetime,
   createSolanaRpc,
   createSolanaRpcSubscriptions,
   createTransactionMessage,
@@ -207,6 +207,9 @@ const transactionMessage = pipe(
 // 必要な全ての署名者でトランザクションメッセージに署名
 const signedTransaction =
   await signTransactionMessageWithSigners(transactionMessage);
+
+// blockhash lifetimeであることをアサート
+assertIsTransactionWithBlockhashLifetime(signedTransaction);
 
 // トランザクションを送信して確認
 await sendAndConfirmTransactionFactory({ rpc, rpcSubscriptions })(
