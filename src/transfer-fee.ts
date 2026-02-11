@@ -306,50 +306,6 @@ if (
 // トランザクション署名を取得
 const transactionSignature = getSignatureFromTransaction(signedTransaction);
 
-console.log("=".repeat(60));
-console.log("Transfer Fee 拡張機能サンプル 実行結果");
-console.log("=".repeat(60));
-console.log("");
-console.log("【アカウント情報】");
-console.log("Mintアドレス:", mint.address.toString());
-console.log("送金元トークンアカウント:", tokenAccount.address.toString());
-console.log("送金先トークンアカウント:", tokenAccount2.address.toString());
-console.log("");
-console.log("【Transfer Fee設定】");
-console.log("手数料率: 1% (100 basis points)");
-console.log("最大手数料: 1,000,000 (最小単位) = 1トークン");
-console.log("");
-console.log("【トークン発行】");
-console.log(`発行量: ${mintAmount.toLocaleString()} (最小単位)`);
-console.log(`発行量: ${Number(mintAmount) / 1e6} トークン`);
-console.log("");
-console.log("【Transfer実行】");
-console.log(`送金額: ${transferAmount.toLocaleString()} (最小単位)`);
-console.log(`送金額: ${Number(transferAmount) / 1e6} トークン`);
-console.log(`手数料: ${transferFee.toLocaleString()} (最小単位)`);
-console.log(`手数料: ${Number(transferFee) / 1e6} トークン`);
-console.log("");
-console.log("【Transfer後の残高】");
-console.log(
-  `送金元残高: ${balance.toLocaleString()} (${Number(balance) / 1e6} トークン)`,
-);
-console.log(
-  `送金先残高: ${balance2.toLocaleString()} (${Number(balance2) / 1e6} トークン)`,
-);
-console.log(
-  `徴収された手数料: ${withheldAmount.toLocaleString()} (${Number(withheldAmount) / 1e6} トークン)`,
-);
-console.log("");
-console.log("【計算確認】");
-console.log(`送金元: 1000 - 100 = ${Number(balance) / 1e6} トークン`);
-console.log(`送金先: 100 - 1(手数料) = ${Number(balance2) / 1e6} トークン`);
-console.log(
-  `手数料: 1% of 100 = ${Number(withheldAmount) / 1e6} トークン (送金先に保管)`,
-);
-console.log("");
-console.log("【トランザクション】");
-console.log("Mint作成トランザクション:", transactionSignature);
-console.log("Transferトランザクション:", transferSignature);
 console.log("");
 console.log("【Explorer URL】");
 console.log(

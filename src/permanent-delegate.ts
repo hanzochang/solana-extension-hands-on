@@ -286,61 +286,6 @@ const setupSignature = getSignatureFromTransaction(signedTransaction);
 // 差し押さえトランザクション署名を取得
 const seizeSignature = getSignatureFromTransaction(signedSeizeTransaction);
 
-console.log("=".repeat(60));
-console.log("Permanent Delegate 拡張機能サンプル 実行結果");
-console.log("=".repeat(60));
-console.log("");
-console.log("【アカウント情報】");
-console.log("Mintアドレス:", mint.address);
-console.log("Permanent Delegate（権限者）:", authority.address);
-console.log("ユーザー:", user.address);
-console.log("ユーザーのトークンアカウント:", userTokenAccount.address);
-console.log("権限者のトークンアカウント:", authorityTokenAccount.address);
-console.log("");
-console.log("【Permanent Delegate設定】");
-console.log("Permanent Delegate:", authority.address);
-console.log(
-  "※ このアドレスは全てのトークンアカウントに対してTransfer権限を持つ",
-);
-console.log("");
-console.log("【トークン発行】");
-console.log(`発行量: ${mintAmount.toLocaleString()} (最小単位)`);
-console.log(`発行量: ${Number(mintAmount) / 1e9} トークン`);
-console.log("発行先: ユーザーのトークンアカウント");
-console.log("");
-console.log("【差し押さえ前の残高】");
-console.log(
-  `ユーザー残高: ${userBalanceBefore.toLocaleString()} (${Number(userBalanceBefore) / 1e9} トークン)`,
-);
-console.log(
-  `権限者残高: ${authorityBalanceBefore.toLocaleString()} (${Number(authorityBalanceBefore) / 1e9} トークン)`,
-);
-console.log("");
-console.log("【差し押さえ実行】");
-console.log(`差し押さえ額: ${seizeAmount.toLocaleString()} (最小単位)`);
-console.log(`差し押さえ額: ${Number(seizeAmount) / 1e9} トークン`);
-console.log("※ ユーザーの署名なしで、Permanent Delegateが強制的にTransfer");
-console.log("");
-console.log("【差し押さえ後の残高】");
-console.log(
-  `ユーザー残高: ${userBalanceAfter.toLocaleString()} (${Number(userBalanceAfter) / 1e9} トークン)`,
-);
-console.log(
-  `権限者残高: ${authorityBalanceAfter.toLocaleString()} (${Number(authorityBalanceAfter) / 1e9} トークン)`,
-);
-console.log("");
-console.log("【計算確認】");
-console.log(
-  `ユーザー: ${Number(userBalanceBefore) / 1e9} - ${Number(seizeAmount) / 1e9} = ${Number(userBalanceAfter) / 1e9} トークン`,
-);
-console.log(
-  `権限者: ${Number(authorityBalanceBefore) / 1e9} + ${Number(seizeAmount) / 1e9} = ${Number(authorityBalanceAfter) / 1e9} トークン`,
-);
-console.log("");
-console.log("【トランザクション】");
-console.log("セットアップTX:", setupSignature);
-console.log("差し押さえTX:", seizeSignature);
-console.log("");
 console.log("【Explorer URL】");
 console.log(
   `Mint: https://explorer.solana.com/address/${mint.address}?cluster=custom&customUrl=http%3A%2F%2Flocalhost%3A8899`,

@@ -215,36 +215,12 @@ await sendAndConfirmTransactionFactory({ rpc, rpcSubscriptions })(
 );
 
 // ============================================================
-// 8. 残高確認
-// ============================================================
-
-// トークンアカウントの残高を取得
-const tokenAccountData = await fetchToken(rpc, tokenAccount.address);
-const balance = tokenAccountData.data.amount;
-
-// ============================================================
 // 9. 結果の出力
 // ============================================================
 
 // トランザクション署名を取得
 const transactionSignature = getSignatureFromTransaction(signedTransaction);
 
-console.log("=".repeat(60));
-console.log("Metadata + MetadataPointer 拡張機能サンプル 実行結果");
-console.log("=".repeat(60));
-console.log("");
-console.log("【アカウント情報】");
-console.log("Mintアドレス:", mint.address.toString());
-console.log("トークンアカウント:", tokenAccount.address.toString());
-console.log("");
-console.log("【トークン残高】");
-console.log(`発行量: ${mintAmount.toLocaleString()} (最小単位)`);
-console.log(`残高: ${balance.toLocaleString()} (最小単位)`);
-console.log(`残高: ${Number(balance) / 1e9} トークン`);
-console.log("");
-console.log("【トランザクション】");
-console.log("署名:", transactionSignature);
-console.log("");
 console.log("【Explorer URL】");
 console.log(
   `https://explorer.solana.com/tx/${transactionSignature}?cluster=custom&customUrl=http%3A%2F%2Flocalhost%3A8899`,
