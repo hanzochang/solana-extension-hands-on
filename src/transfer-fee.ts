@@ -281,32 +281,6 @@ const transferSignature = getSignatureFromTransaction(
 );
 
 // ============================================================
-// 10. 残高確認
-// ============================================================
-
-// 送金元トークンアカウントの残高を取得
-const tokenAccountData = await fetchToken(rpc, tokenAccount.address);
-const balance = tokenAccountData.data.amount;
-
-// 送金先トークンアカウントの残高を取得
-const tokenAccount2Data = await fetchToken(rpc, tokenAccount2.address);
-const balance2 = tokenAccount2Data.data.amount;
-
-// 送金先に保管された手数料を取得（TransferFeeAmount拡張から）
-let withheldAmount = 0n;
-if (
-  tokenAccount2Data.data.extensions.__option === "Some" &&
-  tokenAccount2Data.data.extensions.value
-) {
-  for (const ext of tokenAccount2Data.data.extensions.value) {
-    if (ext.__kind === "TransferFeeAmount") {
-      withheldAmount = ext.withheldAmount;
-      break;
-    }
-  }
-}
-
-// ============================================================
 // 11. 結果の出力
 // ============================================================
 

@@ -293,6 +293,14 @@ const setupSignature = getSignatureFromTransaction(signedTransaction);
 // 差し押さえトランザクション署名を取得
 const seizeSignature = getSignatureFromTransaction(signedSeizeTransaction);
 
+console.log("【差し押さえ前の残高】");
+console.log(`  ユーザー: ${userBalanceBefore}`);
+console.log(`  権限者:   ${authorityBalanceBefore}`);
+console.log("");
+console.log("【差し押さえ後の残高】");
+console.log(`  ユーザー: ${userBalanceAfter}`);
+console.log(`  権限者:   ${authorityBalanceAfter}`);
+console.log("");
 console.log("【Explorer URL】");
 console.log(
   `Mint: https://explorer.solana.com/address/${mint.address}?cluster=custom&customUrl=http%3A%2F%2Flocalhost%3A8899`,
